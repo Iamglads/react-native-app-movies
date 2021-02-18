@@ -1,37 +1,66 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Button, Image, FlatList } from 'react-native';
+import { StyleSheet, View, TextInput, Button, FlatList } from 'react-native';
 import {getFilmsFromApiWithSearchedText} from '../API/TMDBApi'
 
 
 import FilmItem from '../Components/FilmItem'
 
 
+// toujours passer par setState pour manipuler les states
+
+
 class Search extends React.Component {
 
-    constructor(props) {
+    constructor(props: Object) {
+
         super(props)
-        this._films = []
+        
+        this.state = {
+            films: [],
+            isLoading: false
+        }
+
+        this.searchedText = ""
     }
 
     _loadFilms () {
-        getFilmsFromApiWithSearchedText("star").then(data => {
-            this._films = data.results
-           this.forceUpdate()
-        })
+        //console.log('Load Films')
+        if(this.searchedText.length > 0) {
+            this.setState({ isLoading: true })
+            getFilmsFromApiWithSearchedText(this.searchedText)
+            .then(data => {
+                this.setState({ 
+                    films: data.results,
+                    isLoading: false
+                })
+            })
+        }  
     }
+
+    _searchTextInputChanged(text: String) {
+        this.searchedText = text 
+    }
+
     render() {
+
+        //console.log('RENDER')
         return (
             // code here 
             <View style={styles.main_container}>
-                <TextInput style={styles.textinput} placeholder='Titre du film'/>
-                <Button title="Rechercher" onPress={ () =>  this._loadFilms } />
+
+                <TextInput 
+                    style={styles.textinput} 
+                    placeholder='Titre du film'
+                    onChangeText={(text) => this._searchTextInputChanged(text)}
+                    onSubmitEditing={() => this._loadFilms()}
+                />
+                <Button title="Rechercher" onPress={ () =>  this._loadFilms() } />
 
                 <FlatList
-                data={this._films}
+                data={this.state.films}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({item}) => <FilmItem film={item}/>}
-                />
-                
+                />  
             </View>
         )
     }
@@ -39,6 +68,7 @@ class Search extends React.Component {
 
 // externaliser le style 
 const styles = StyleSheet.create ({
+
     main_container: {
         padding: 5,
         marginTop: 40,
@@ -53,6 +83,7 @@ const styles = StyleSheet.create ({
     style_button: {
         marginTop: 20
     }
+
 })
 
 export default Search;
