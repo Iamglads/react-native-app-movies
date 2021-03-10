@@ -1,6 +1,6 @@
+// styles login 
+
 import { Platform, StyleSheet } from 'react-native'
-
-
 
 const styles = StyleSheet.create({
 
@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
         flex: 3,
         backgroundColor: 'white',
         borderTopLeftRadius: 30,
-        borderTopRightRadius: 30
+        borderTopRightRadius: 30,
+        paddingHorizontal: 20,
+        paddingVertical: 30
     },
 
     text_footer: {

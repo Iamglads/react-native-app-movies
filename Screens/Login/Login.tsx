@@ -27,12 +27,12 @@ const Login = () => {
 
             <Animatable.View
             animation="fadeInUpBig"
-            style={styles.footer}
+            style={ styles.footer }
             >
                 <Text style={ styles.text_footer }> Username </Text>
-                <View style={styles.action}>
+                <View style={ styles.action }>
                     <FontAwesome name="user-o" size={20} />
-                    <TextInput style={styles.textInput} placeholder="Votre prénom" placeholderTextColor="#666666"/>
+                    <TextInput style={ styles.textInput } placeholder="Votre prénom" placeholderTextColor="#666666"/>
 {/*                     <Animatable.View animation="bounceIn">
                         <Feather name="check-circle" color="green" size={20}/>
                     </Animatable.View> */}
@@ -48,15 +48,15 @@ const Login = () => {
                 <TouchableOpacity >
                     <Text style={{color: '#009387', marginTop:15}}> Vous avez oublié votre mot de passe?</Text>
                 </TouchableOpacity>
-                <View style={ styles.button}>
-                    <TouchableOpacity style={styles.signIn}>
+                <View style={ styles.button }>
+                    <TouchableOpacity style={ styles.signIn }>
                        {/*  <LinearGradient  colors={['#08d4c4', '#01ab9d']} style={styles.signIn}>
                             <Text style={ styles.textSign}> Se connecter </Text>
                         </LinearGradient> */}
                         
                     </TouchableOpacity>
-                    <TouchableOpacity style={ styles.signIn}>
-                        <Text style={ styles.textSign}> Créer un compte </Text>
+                    <TouchableOpacity style={ styles.signIn }>
+                        <Text style={ styles.textSign }> Créer un compte </Text>
                     </TouchableOpacity>
                 </View>
             </Animatable.View>

@@ -15,7 +15,10 @@ const styles = StyleSheet.create ({
     textinput: {
         height: 40,
         borderColor: 'grey',
-        borderRadius: 2,
+        borderRadius: 5,
+        borderWidth: 1,
+        marginTop: 20,
+        paddingLeft: 5
     },
     style_button: {
         marginTop: 20
@@ -29,6 +32,11 @@ const styles = StyleSheet.create ({
         bottom: 0, 
         alignItems: 'center',
         justifyContent: 'center'
+    },
+
+    register_container:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     }
 
 })
